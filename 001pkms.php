@@ -36,37 +36,41 @@
     <img src="img/imagen-fondo.png" alt="fondo">
   </div>
 
-<div class="pokemon-list">
+  <div class="pokemon-list">
     <h1>Pokemones</h1>
-<?php
+    <?php
+    // Incluye el archivo de conexion
+    include 'Conexion/conexion.php';
 
-// Incluye el archivo de conexion
-include 'Conexion/conexion.php';
+    // Consulta, todos los pokemon
+    $sql = "SELECT id, name, type, subtype, region FROM pokemons";
+    $result = $conexion->query($sql);
 
-// Consulta para obtener todos los pokemon
-$sql = "SELECT id, name, type, subtype, region FROM pokemons";
-$result = $conexion->query($sql);
+    if ($result->num_rows > 0) {
+        // Convierte los datos en un array
+        $pokemons = $result->fetch_all(MYSQLI_ASSOC);
 
-if ($result->num_rows > 0) {
-    // Convierte los datos en un array
-    $pokemons = $result->fetch_all(MYSQLI_ASSOC);
+        // Lista cada pokemon usando foreach
+        foreach ($pokemons as $pokemon) {
+            echo "ID: " . $pokemon["id"] . " - Nombre: " . $pokemon["name"] . " - Tipo: " . $pokemon["type"];
+            if (!empty($pokemon["subtype"])) {
+                echo " - Subtipo: " . $pokemon["subtype"];
+            }
+            echo " - Región: " . $pokemon["region"];
+            // Botones de Editar y Borrar
+            echo "<a href='editar-pokemon.php?id=" . $pokemon["id"] . "' class='btn-editar'>Editar</a>";
+            echo "<a href='borrar-pokemon.php?id=" . $pokemon["id"] . "' class='btn-borrar'>Borrar</a><br>";
 
-    // Lista cada pokemon usando foreach
-    foreach ($pokemons as $pokemon) {
-        echo "ID: " . $pokemon["id"] . " - Nombre: " . $pokemon["name"] . " - Tipo: " . $pokemon["type"];
-        if (!empty($pokemon["subtype"])) {
-            echo " - Subtipo: " . $pokemon["subtype"];
         }
-        echo " - Región: " . $pokemon["region"] . "<br>";
+    } else {
+        echo "0 Pokémon encontrados";
     }
-} else {
-    echo "0 Pokémon encontrados";
-}
 
-$conexion->close();
-
-?>
+    $conexion->close();
+    ?>
 </div>
+
+
 
 <div class="container-footer">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

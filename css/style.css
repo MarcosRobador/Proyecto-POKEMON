@@ -12,6 +12,7 @@ body {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
+    text-align: center;   
 }
 
 .imagen-fondo {
@@ -23,4 +24,32 @@ body {
     width: 100%; 
     height: auto; 
     display: block; 
+}
+
+.form-editar{
+    margin: 0 auto;
+    margin-top: 35px;
+    width: 60%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-editar, .btn-borrar {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px;
+    background-color: #efefef; 
+    display: block;    
+    text-align: center;
+    width: 50%;
+}
+
+
+.btn-editar:hover, .btn-borrar:hover {
+    opacity: 0.8;
 }
