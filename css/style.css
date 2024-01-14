@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.pokemon-list {
+    margin: 0 auto;
+    margin-top: 35px;
+    width: 60%;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.imagen-fondo {
+    overflow: hidden; 
+    opacity: 0.5;
+}
+  
+.imagen-fondo img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
