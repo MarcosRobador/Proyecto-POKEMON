@@ -56,7 +56,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         if ($stmt->execute()) {
             echo "Pokémon actualizado con éxito.";
 
-            header("Location: 001pkms.php");
+            header("Location: 003pkms.php");
             exit;
         } else {
             echo "Error al actualizar el Pokémon.";

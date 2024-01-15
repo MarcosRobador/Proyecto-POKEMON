@@ -12,7 +12,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     if ($stmt->execute()) {
         echo "Pokémon borrado con éxito.";
         // Redirige despues de borrar el Pokémon
-        header("Location: 001pkms.php");
+        header("Location: 003pkms.php");
         exit;
     } else {
         echo "Error al borrar el Pokémon.";
