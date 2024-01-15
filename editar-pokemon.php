@@ -10,50 +10,47 @@
 </head>
 <body>
     
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Pokémon</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">XXX</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">XXX</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">XXX</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Pokémon</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="003pkms.php">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">XXX</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">XXX</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
   </header>
 
+  <?php
+  include 'Conexion/conexion.php';
 
-
-
-<?php
-include 'Conexion/conexion.php';
-
-// Verifica si se recibe un ID y es numerico
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+  // Verifica si se recibe un ID y es numerico
+  if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $pokemonId = $_GET['id'];
 
     // Procesa el formulario de edicion
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $name = $_POST['name'] ?? '';
-        $type = $_POST['type'] ?? '';
-        $subtype = $_POST['subtype'] ?? '';
-        $region = $_POST['region'] ?? '';
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = $_POST['name'] ?? '';
+    $type = $_POST['type'] ?? '';
+    $subtype = $_POST['subtype'] ?? '';
+    $region = $_POST['region'] ?? '';
 
-        // Prepara consulta de actualizacion
-        $stmt = $conexion->prepare("UPDATE pokemons SET name = ?, type = ?, subtype = ?, region = ? WHERE id = ?");
-        $stmt->bind_param("ssssi", $name, $type, $subtype, $region, $pokemonId);
+    // Prepara consulta de actualizacion
+    $stmt = $conexion->prepare("UPDATE pokemons SET name = ?, type = ?, subtype = ?, region = ? WHERE id = ?");
+    $stmt->bind_param("ssssi", $name, $type, $subtype, $region, $pokemonId);
 
-        if ($stmt->execute()) {
+  if ($stmt->execute()) {
             echo "Pokémon actualizado con éxito.";
 
             header("Location: 003pkms.php");
@@ -73,12 +70,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
-        $pokemon = $result->fetch_assoc();
-    ?>
+  if ($result->num_rows === 1) {
+    $pokemon = $result->fetch_assoc();
+  ?>
 
 
-<div class="form-editar" >
+  <div class="form-editar" >
     <!-- Formulario de edicion -->
     <form action="editar-pokemon.php?id=<?php echo $pokemonId; ?>" method="post">
     
@@ -116,24 +113,24 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     </select><br>
     
     <input type="submit" value="Actualizar">
-</form>
-</div>
+  </form>
+  </div>
 
-<?php
+  <?php
     } else {
         echo "Pokémon no encontrado.";
     }
 
     $stmt->close();
-} else {
+  } else {
     echo "ID no válido.";
-}
+  }
 
-$conexion->close();
-?>
+  $conexion->close();
+  ?>
 
 
-<div class="container-footer">
+  <div class="container-footer">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="d-flex flex-grow-1 justify-content-start align-items-center">
         <a href="/" class="text-muted text-decoration-none lh-1">
@@ -148,7 +145,7 @@ $conexion->close();
         <li class="espacio-icono"><a class="text-muted" href="https://github.com/MarcosRobador"><i class="fab fa-github"></i></a></li>
       </ul>
     </footer>
-</div>
+  </div>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
