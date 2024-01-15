@@ -36,51 +36,65 @@
     <img src="img/imagen-fondo.png" alt="fondo">
   </div>
 
-  <div class="pokemon-list">
-    <h1>Pokemones</h1>
-      <?php
-        include 'Conexion/conexion.php';
+  <?php
+    include 'Conexion/conexion.php';
 
-        $sql = "SELECT id, name, type, subtype, region FROM pokemons";
-        $result = $conexion->query($sql);
+    // Comprueba si 'ordenar_por' esta en la URL. Si esta presente, usa su valor
+    // Si no esta, establece 'name' como valor por defecto
+    $ordenar_por = isset($_GET['ordenar_por']) ? $_GET['ordenar_por'] : 'name';
 
-        if ($result->num_rows > 0) {
-          echo "<table class='table table-striped pokemon-table'>";
-          echo "<thead>";
-          echo "<tr>";
-          echo "<th>ID</th>";
-          echo "<th>Nombre</th>";
-          echo "<th>Tipo</th>";
-          echo "<th>Subtipo</th>";
-          echo "<th>Región</th>";
-          echo "<th>Acciones</th>";
-          echo "</tr>";
-          echo "</thead>";
-          echo "<tbody>";
+    // Comprueba si 'direccion' esta y es igual a 'desc'
+    // Si es asi, establece la variable $direccion a 'DESC'.
+    // Si no, establece 'ASC' (ascendente) como valor por defecto
+    $direccion = isset($_GET['direccion']) && $_GET['direccion'] == 'desc' ? 'DESC' : 'ASC';
 
-        while ($pokemon = $result->fetch_assoc()) {
-          echo "<tr>";
-          echo "<td>" . htmlspecialchars($pokemon["id"]) . "</td>";
-          echo "<td>" . htmlspecialchars($pokemon["name"]) . "</td>";
-          echo "<td>" . htmlspecialchars($pokemon["type"]) . "</td>";
-          echo "<td>" . htmlspecialchars($pokemon["subtype"]) . "</td>";
-          echo "<td>" . htmlspecialchars($pokemon["region"]) . "</td>";
-          echo "<td>";
-          echo "<a href='editar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-primary'>Editar</a> ";
-          echo "<a href='borrar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-danger'>Borrar</a>";
-          echo "</td>";
-          echo "</tr>";
-        }
 
-          echo "</tbody>";
-          echo "</table>";
-        } 
-        else {
-          echo "0 Pokémon encontrados";
-        }
-        $conexion->close();
-      ?>
-  </div>
+    // Crea la consulta SQL con los parametros de ordenacion
+    $sql = "SELECT id, name, type, subtype, region FROM pokemons ORDER BY $ordenar_por $direccion";
+    $result = $conexion->query($sql);
+
+    echo "<div class='pokemon-list'>";
+    echo "<h1>Pokemones</h1>";
+
+    if ($result->num_rows > 0) {
+      echo "<table class='table table-striped pokemon-table'>";
+      echo "<thead>";
+      echo "<tr>";
+      echo "<th>ID <a href='?ordenar_por=id&direccion=asc'>˄</a> <a href='?ordenar_por=id&direccion=desc'>˅</a></th>";
+      echo "<th>Nombre <a href='?ordenar_por=name&direccion=asc'>˄</a> <a href='?ordenar_por=name&direccion=desc'>˅</a></th>";
+      echo "<th>Tipo <a href='?ordenar_por=type&direccion=asc'>˄</a> <a href='?ordenar_por=type&direccion=desc'>˅</a></th>";
+      echo "<th>Subtipo <a href='?ordenar_por=subtype&direccion=asc'>˄</a> <a href='?ordenar_por=subtype&direccion=desc'>˅</a></th>";
+      echo "<th>Región <a href='?ordenar_por=region&direccion=asc'>˄</a> <a href='?ordenar_por=region&direccion=desc'>˅</a></th>";
+      echo "<th>Acciones</th>";
+      echo "</tr>";
+      echo "</thead>";
+      echo "<tbody>";
+
+    while ($pokemon = $result->fetch_assoc()) {
+      echo "<tr>";
+      echo "<td>" . htmlspecialchars($pokemon["id"]) . "</td>";
+      echo "<td>" . htmlspecialchars($pokemon["name"]) . "</td>";
+      echo "<td>" . htmlspecialchars($pokemon["type"]) . "</td>";
+      echo "<td>" . htmlspecialchars($pokemon["subtype"]) . "</td>";
+      echo "<td>" . htmlspecialchars($pokemon["region"]) . "</td>";
+      echo "<td>";
+      echo "<a href='editar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-primary'>Editar</a> ";
+      echo "<a href='borrar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-danger'>Borrar</a>";
+      echo "</td>";
+      echo "</tr>";
+    }
+
+    echo "</tbody>";
+    echo "</table>";
+
+    } 
+    else {
+      echo "0 Pokémon encontrados";
+    }
+
+    $conexion->close();
+    echo "</div>";
+  ?>
 
   <div class="container-footer">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

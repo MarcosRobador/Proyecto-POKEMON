@@ -45,3 +45,12 @@ body {
 .pokemon-table tr:nth-child(even){
     background-color: #f2f2f2;
 }
+
+.pokemon-list h1{
+    margin: 20px;
+}
+
+.pokemon-list{
+    width: 90%;
+    margin: 20px auto; /* Margen superior e inferior de 20px, y margen izquierdo y derecho automático */
+}
