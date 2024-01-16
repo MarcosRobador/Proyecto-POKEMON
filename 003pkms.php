@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +38,20 @@
   <div class="imagen-fondo" id="#inicio">
     <img src="img/imagen-fondo.png" alt="fondo">
   </div>
+  
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <?php 
+      // Verifica si existe la variable de sesión 'nombre'
+      echo isset($_SESSION['nombre']) ? 'El usuario ' . $_SESSION['nombre'] : 'Invitado'; 
+      echo isset($_SESSION['password']) ? ' ha sido introducido en el sistema con la contraseña ' . $_SESSION['password'] : ' ha sido introducido en el sistema con la contraseña: No disponible en este navegador'; 
+    ?>
+    
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
 
   <?php
     include 'Conexion/conexion.php';
@@ -57,6 +74,7 @@
     echo "<h1>Pokemones</h1>";
 
     if ($result->num_rows > 0) {
+      echo "<div class='table-responsive'>";
       echo "<table class='table table-striped pokemon-table'>";
       echo "<thead>";
       echo "<tr>";
@@ -86,6 +104,7 @@
 
     echo "</tbody>";
     echo "</table>";
+    echo "</div>";
 
     } 
     else {

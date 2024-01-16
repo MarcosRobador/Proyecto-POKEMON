@@ -1,3 +1,6 @@
+.nombre{
+    background-color: #333; 
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -52,5 +55,14 @@ body {
 
 .pokemon-list{
     width: 90%;
-    margin: 20px auto; /* Margen superior e inferior de 20px, y margen izquierdo y derecho automático */
+    margin: 20px auto;
+}
+
+.table-responsive {
+    overflow-x: auto;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: center;
 }
