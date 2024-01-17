@@ -15,25 +15,43 @@ session_start();
     
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Pokémon</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">XXX</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">XXX</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">XXX</a>
-          </li>
-        </ul>
-      </div>
+        <a class="navbar-brand" href="#">Pokémon</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav">
+                <?php if (isset($_SESSION['usuario_id'])): ?>
+                    <!-- Usuario logueado -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Perfil
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
+                        </div>
+                    </li>
+                <?php else: ?>
+                    <!-- Usuario no logueado -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="login-register/login.html">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login-register/register.html">Registrar</a>
+                    </li>
+                <?php endif; ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">XXX</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">XXX</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-  </header>
+</header>
+
+
 
   <div class="imagen-fondo" id="#inicio">
     <img src="img/imagen-fondo.png" alt="fondo">
@@ -96,8 +114,11 @@ session_start();
       echo "<td>" . htmlspecialchars($pokemon["subtype"]) . "</td>";
       echo "<td>" . htmlspecialchars($pokemon["region"]) . "</td>";
       echo "<td>";
+    // Verifica si el usuario está logueado
+    if (isset($_SESSION['usuario_id'])) {
       echo "<a href='editar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-primary'>Editar</a> ";
       echo "<a href='borrar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-danger'>Borrar</a>";
+    }
       echo "</td>";
       echo "</tr>";
     }
