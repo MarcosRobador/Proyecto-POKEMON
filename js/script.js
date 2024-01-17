@@ -5,3 +5,5 @@ function confirmDelete(pokemon) {
         window.location.href = 'borrar-pokemon.php?id=' + pokemon.id;
     }
 }
+
+    document.getElementById("year").textContent = new Date().getFullYear();

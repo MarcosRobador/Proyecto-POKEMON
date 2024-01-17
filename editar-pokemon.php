@@ -113,7 +113,7 @@
     
     <input type="submit" value="Actualizar">
   </form>
-  
+
    <!-- Muestra la imagen del Pokémon -->
    <img src="<?php echo htmlspecialchars($pokemon['url_imagen']); ?>" alt="Imagen de <?php echo htmlspecialchars($pokemon['name']); ?>">
   </div>
@@ -130,26 +130,19 @@
 
   $conexion->close();
   ?>
-
-
+  
   <div class="container-footer">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="d-flex flex-grow-1 justify-content-start align-items-center">
         <a href="/" class="text-muted text-decoration-none lh-1">
           <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
         </a>
-        <span class="text-muted">© 2024 Marcos Robador Mateos</span>
-      </div>
-  
-      <ul class="nav d-flex justify-content-end list-unstyled">
-        <li class="espacio-icono"><a class="text-muted" href="tu-enlace-a-instagram"><i class="fab fa-instagram"></i></a></li>
-        <li class="espacio-icono"><a class="text-muted" href="https://www.linkedin.com/in/marcos-robador-mateos-7b3484252/"><i class="fab fa-linkedin"></i></a></li>
-        <li class="espacio-icono"><a class="text-muted" href="https://github.com/MarcosRobador"><i class="fab fa-github"></i></a></li>
-      </ul>
+        <span class="text-muted">©Copyright Proyecto Pokémon <span id="year"></span></span>
     </footer>
   </div>
 
 </body>
+<script src="js/script.js" ></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3UDkPWsVZ4nT4G8/61EZTx" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
