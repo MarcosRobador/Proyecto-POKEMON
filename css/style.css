@@ -45,10 +45,6 @@ body {
     text-align: center;
 }
 
-.pokemon-table tr:nth-child(even){
-    background-color: #f2f2f2;
-}
-
 .pokemon-list h1{
     margin: 20px;
 }

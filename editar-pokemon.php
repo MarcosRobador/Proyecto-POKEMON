@@ -12,7 +12,7 @@
     
   <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Pokémon</a>
+        <a class="navbar-brand" href="003pkms.php">Pokémon</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +37,7 @@
 
   // Verifica si se recibe un ID y es numerico
   if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $pokemonId = $_GET['id'];
+      $pokemonId = $_GET['id'];
 
     // Procesa el formulario de edicion
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -64,16 +64,15 @@
         return;
     }
 
-    // Obtiene datos del pokemon para el formulario
-    $stmt = $conexion->prepare("SELECT id, name, type, subtype, region FROM pokemons WHERE id = ?");
-    $stmt->bind_param("i", $pokemonId);
-    $stmt->execute();
-    $result = $stmt->get_result();
+   // Obtiene datos del pokemon para el formulario, incluyendo la URL de la imagen
+   $stmt = $conexion->prepare("SELECT pokemons.*, imagenes_pokemon.url_imagen FROM pokemons LEFT JOIN imagenes_pokemon ON pokemons.id = imagenes_pokemon.pokemon_id WHERE pokemons.id = ?");
+   $stmt->bind_param("i", $pokemonId);
+   $stmt->execute();
+   $result = $stmt->get_result();
 
-  if ($result->num_rows === 1) {
-    $pokemon = $result->fetch_assoc();
-  ?>
-
+   if ($result->num_rows === 1) {
+       $pokemon = $result->fetch_assoc();
+       ?>
 
   <div class="form-editar" >
     <!-- Formulario de edicion -->
@@ -114,6 +113,9 @@
     
     <input type="submit" value="Actualizar">
   </form>
+  
+   <!-- Muestra la imagen del Pokémon -->
+   <img src="<?php echo htmlspecialchars($pokemon['url_imagen']); ?>" alt="Imagen de <?php echo htmlspecialchars($pokemon['name']); ?>">
   </div>
 
   <?php
