@@ -6,4 +6,5 @@ function confirmDelete(pokemon) {
     }
 }
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+// Año footer
+document.getElementById("year").textContent = new Date().getFullYear();
