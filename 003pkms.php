@@ -117,7 +117,7 @@ session_start();
     // Verifica si el usuario está logueado
     if (isset($_SESSION['usuario_id'])) {
       echo "<a href='editar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-primary'>Editar</a> ";
-      echo "<a href='borrar-pokemon.php?id=" . htmlspecialchars($pokemon["id"]) . "' class='btn btn-danger'>Borrar</a>";
+      echo "<a href='borrar-pokemon.php' onclick='confirmarBorrado(" . htmlspecialchars($pokemon["id"]) . ");' class='btn btn-danger'>Borrar</a>";
     }
       echo "</td>";
       echo "</tr>";

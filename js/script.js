@@ -1,8 +1,7 @@
 "use strict"
-
-function confirmDelete(pokemon) {
-    if (confirm("¿Estás seguro de que quieres borrar a " + pokemon.name + "?")) {
-        window.location.href = 'borrar-pokemon.php?id=' + pokemon.id;
+function confirmarBorrado(id) {
+    if (confirm("¿Seguro que quieres borrar este Pokémon?")) {
+        window.location.href = 'borrar-pokemon.php?id=' + id;
     }
 }
 
