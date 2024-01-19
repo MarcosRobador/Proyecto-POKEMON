@@ -27,10 +27,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // La contraseña no coincide
             echo "Contraseña incorrecta";
+            echo "<button onclick=\"location.href='register.html'\">Registrar</button>";
+            echo "<button onclick=\"location.href='login.html'\">Loguear de nuevo</button>";
         }
     } else {
         // Usuario no encontrado
         echo "No se encontró una cuenta con ese email";
+        echo "<button onclick=\"location.href='register.html'\">Registrar</button>";
+        echo "<button onclick=\"location.href='login.html'\">Loguear de nuevo</button>";
     }
     $conexion->close();
 }
