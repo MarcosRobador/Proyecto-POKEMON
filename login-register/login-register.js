@@ -37,15 +37,15 @@ function validarFormulario() {
         mensajeError += "La contraseña debe tener al menos 6 caracteres.\n";
     }
 
-    if(password && password[0] !== password[0].toUpperCase()) {
-        mensajeError += "La contraseña debe comenzar con una letra mayúscula.\n";
+    // Comprobar si la contraseña contiene al menos una letra mayúscula
+    if(password && !/[A-Z]/.test(password)) {
+        mensajeError += "La contraseña debe contener al menos una letra mayúscula.\n";
     }
 
-        // Validación de coincidencia de contraseñas
+    // Validación de coincidencia de contraseñas
     if (password !== confirma_password) {
-        mensajeError += "Las contraseñas no coinciden.\n";
+        mensajeError += "Las contraseñas sqfefsqo coinciden.\n";
     }
-    
 
     if(mensajeError) {
         alert(mensajeError);

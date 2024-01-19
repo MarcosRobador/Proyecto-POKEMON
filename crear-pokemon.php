@@ -21,12 +21,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="003pkms.php">Inicio</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">XXX</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">XXX</a>
-            </li>
           </ul>
         </div>
       </nav>

@@ -40,12 +40,6 @@ session_start();
                         <a class="nav-link" href="login-register/register.html">Registrar</a>
                     </li>
                 <?php endif; ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">XXX</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">XXX</a>
-                </li>
             </ul>
         </div>
     </nav>
