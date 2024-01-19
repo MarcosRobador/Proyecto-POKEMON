@@ -138,6 +138,14 @@ session_start();
     </a>
   <?php endif; ?>
 
+  <div class="container mt-5">
+        <div class="colorizable p-5">
+            <p>Elige tu color favorito:</p>
+            <input type="color" id="colorPicker" class="form-control color-picker">
+        </div>
+    </div>
+
+
   <div class="container-footer">
 
   <div class="container-footer">

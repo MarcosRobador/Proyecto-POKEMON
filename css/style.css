@@ -119,9 +119,11 @@ body {
 }
 
 .btn-crear-pokemon {
-    color: white;
+    background-color: blue;
+    color: rgb(0, 0, 0);
     padding: 10px 20px; 
     margin-left: 120px;
+    margin-bottom: 30px;
     border: none;
     cursor: pointer; 
     text-align: center; 
@@ -130,5 +132,11 @@ body {
     transition: background-color 0.3s; 
 }
 
+.colorizable {
+    background-color: var(--main-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
 
 

@@ -44,7 +44,7 @@ function validarFormulario() {
 
     // Validación de coincidencia de contraseñas
     if (password !== confirma_password) {
-        mensajeError += "Las contraseñas sqfefsqo coinciden.\n";
+        mensajeError += "Las contraseñas no coinciden.\n";
     }
 
     if(mensajeError) {

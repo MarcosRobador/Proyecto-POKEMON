@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
 
     // Redirige 
-    header("Location: 003pkms.php"); 
+    header("Location: index.php"); 
     exit();
 }
 ?>
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="form-crear" >
     <h2>Crear Pokémon</h2>
-    <form method="post" action="crear-pokemon.php">
+    <form method="post" action="crear-pokemon.php" enctype="multipart/form-data">
         <p>
           <label for="name">Nombre:</label>
           <input type="text" name="name" id="name" required>
@@ -88,6 +88,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <select name="region" id="region" required>
           <option value="Kanto">Kanto</option><option value="Johto">Johto</option><option value="Hoenn">Hoenn</option><option value="Sinnoh">Sinnoh</option><option value="Unova">Unova</option><option value="Kalos">Kalos</option><option value="Alola">Alola</option><option value="Galar">Galar</option><option value="Hisui">Hisui</option>
           </select>
+        </p>
+
+        <p>
+          <label for="image">Imagen del Pokémon:</label>
+          <input type="file" name="image" id="image" required>
         </p>
 
         <input type="submit" value="Crear Pokémon">
