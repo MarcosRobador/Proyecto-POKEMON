@@ -19,7 +19,7 @@ body {
     display: block; 
 }
 
-.form-editar {
+.form-editar, .form-crear{
     margin: 0 auto;
     margin-top: 35px;
     width: 60%;
