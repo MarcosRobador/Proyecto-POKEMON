@@ -137,10 +137,14 @@ session_start();
   ?>
 
 
-    <!-- Boton para ir a crear-pokemon.php -->
+  <?php if (isset($_SESSION['usuario_id'])): ?>
+    <!-- Boton para añadir, visible solo para usuarios logueados -->
     <a href="crear-pokemon.php">
-      <button class="btn-crear-pokemon">Crear Pokémon</button>
+      <button class="btn-crear-pokemon">Añadir Pokémon</button>
     </a>
+  <?php endif; ?>
+
+  <div class="container-footer">
 
   <div class="container-footer">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
