@@ -136,6 +136,12 @@ session_start();
     echo "</div>";
   ?>
 
+
+    <!-- Boton para ir a crear-pokemon.php -->
+    <a href="crear-pokemon.php">
+      <button class="btn-crear-pokemon">Crear Pokémon</button>
+    </a>
+
   <div class="container-footer">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="d-flex flex-grow-1 justify-content-start align-items-center">
