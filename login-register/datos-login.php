@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['password'] = $password; // Almacenar la contraseña introducida por el usuario en la sesión
             
             // Redireccionar a 003pkms.php
-            header("Location: ../003pkms.php");
+            header("Location: ../index.php");
             exit();
             
         } else {
